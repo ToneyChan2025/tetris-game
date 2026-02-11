@@ -32,30 +32,6 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: tetris-windows
+        name: tetris-windows-exe
         path: dist/tetris.exe
-    
-    - name: Create Release
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v1
-      with:
-        files: dist/tetris.exe
-        tag_name: v${{ github.run_number }}
-        name: Release v${{ github.run_number }}
-        body: |
-          俄罗斯方块游戏 Windows 版本
-          
-          ## 下载
-          - tetris.exe: Windows 可执行文件
-          
-          ## 运行方式
-          双击 tetris.exe 即可运行
-          
-          ## 操作说明
-          - ← → : 左右移动
-          - ↓   : 加速下落
-          - ↑   : 旋转
-          - 空格 : 直接落下
-          - P   : 暂停
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        retention-days: 90
