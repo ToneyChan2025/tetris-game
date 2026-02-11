@@ -300,7 +300,8 @@ class TetrisGame:
         rect = pygame.Rect(x * BLOCK_SIZE + 1, y * BLOCK_SIZE + 1, BLOCK_SIZE - 2, BLOCK_SIZE - 2)
         pygame.draw.rect(self.screen, color, rect)
         # 高光效果
-        pygame.draw.rect(self.screen, (min(255, c + 50) for c in color), rect, 2)
+        highlight_color = tuple(min(255, c + 50) for c in color)
+        pygame.draw.rect(self.screen, highlight_color, rect, 2)
     
     def draw_text(self, text, x, y, color, small=False):
         """绘制文字"""
